@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Event</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Update Event</h1>
+        
+        <!-- Step 1: Search by ID to load existing data -->
+        <div class="form-group">
+            <label for="search_id">Enter Event ID to Update:</label>
+            <input type="number" id="search_id" placeholder="e.g. 1">
+            <button type="button" class="btn" onclick="fetchEventData()" style="margin-top: 10px;">Load Event</button>
+        </div>
+
+        <p id="errorMessage" style="color: red; display: none; margin-top: 10px;"></p>
+
+        <!-- Step 2: Form to modify and submit updated values -->
+        <form id="updateForm" action="/update-event" method="POST" style="display: none; margin-top: 20px;">
+            <input type="hidden" id="event_id" name="event_id">
+
+            <div class="form-group">
+                <label for="event_name">Event Name:</label>
+                <input type="text" id="event_name" name="event_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="event_time">Event Time:</label>
+                <input type="time" id="event_time" name="event_time" required>
+            </div>
+
+            <div class="form-group">
+                <label for="event_day">Event Date:</label>
+                <input type="date" id="event_day" name="event_day" required>
+            </div>
+
+            <div class="form-group">
+                <label for="venue">Venue:</label>
+                <input type="text" id="venue" name="venue" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn">Save Changes</button>
+        </form>
+
+        <br>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script>
+        function fetchEventData() {
+            const eventId = document.getElementById('search_id').value;
+            const updateForm = document.getElementById('updateForm');
+            const errorMessage = document.getElementById('errorMessage');
+
+            updateForm.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            if (!eventId) {
+                errorMessage.innerText = 'Please enter a valid Event ID.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            fetch(`/api/events/${eventId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Event not found');
+                    }
+                    return response.json();
+                })
+                .then(event => {
+                    document.getElementById('event_id').value = event.event_id;
+                    document.getElementById('event_name').value = event.event_name;
+                    document.getElementById('event_time').value = event.event_time;
+                    document.getElementById('event_day').value = event.event_day;
+                    document.getElementById('venue').value = event.venue;
+                    document.getElementById('description').value = event.description || '';
+
+                    updateForm.style.display = 'block';
+                })
+                .catch(error => {
+                    errorMessage.innerText = `No event found with ID ${eventId}`;
+                    errorMessage.style.display = 'block';
+                });
+        }
+    </script>
+</body>
+</html>

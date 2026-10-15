@@ -1,0 +1,245 @@
+/* ========================================
+COLLEGE EVENT MANAGEMENT SYSTEM
+Complete Stylesheet
+======================================== */
+
+/* 1. Global Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+/* 2. Page Background and Typography */
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: #f0f4f8;
+color: #2d3748;
+min-height: 100vh;
+padding: 40px 20px;
+line-height: 1.6;
+}
+
+/* 3. Main Container */
+.container {
+background: #ffffff;
+width: 100%;
+max-width: 600px;
+margin: 30px auto;
+padding: 35px;
+border-radius: 14px;
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+}
+
+/* Wider container for event tables */
+.table-container {
+max-width: 1100px;
+overflow-x: auto;
+}
+
+/* 4. Headings */
+h1 {
+color: #1e3a5f;
+font-size: 28px;
+line-height: 1.3;
+text-align: center;
+margin-bottom: 20px;
+}
+
+h2,
+h3 {
+color: #1e3a5f;
+margin-bottom: 15px;
+}
+
+p {
+color: #64748b;
+margin-bottom: 22px;
+}
+
+/* 5. Navigation Menu on Home Page */
+.nav-menu {
+display: flex;
+flex-direction: column;
+gap: 12px;
+margin-top: 25px;
+}
+
+/* 6. Buttons */
+.btn {
+display: block;
+width: 100%;
+padding: 12px 18px;
+border: none;
+border-radius: 8px;
+background: #2563eb;
+color: #ffffff;
+font-size: 16px;
+font-weight: 600;
+font-family: inherit;
+text-align: center;
+text-decoration: none;
+cursor: pointer;
+transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+background: #1d4ed8;
+transform: translateY(-1px);
+}
+
+.btn:focus-visible,
+.back-link:focus-visible {
+outline: 3px solid #93c5fd;
+outline-offset: 3px;
+}
+
+/* Delete Button */
+.delete-btn {
+background: #dc2626;
+}
+
+.delete-btn:hover {
+background: #b91c1c;
+}
+
+/* 7. Forms */
+form {
+width: 100%;
+}
+
+.form-group {
+display: flex;
+flex-direction: column;
+margin-bottom: 20px;
+}
+
+label {
+color: #334155;
+font-weight: 600;
+margin-bottom: 8px;
+}
+
+/* Form Fields */
+input[type="text"],
+input[type="number"],
+input[type="time"],
+input[type="date"],
+textarea {
+display: block;
+width: 100%;
+padding: 12px 14px;
+border: 1px solid #cbd5e1;
+border-radius: 8px;
+background: #ffffff;
+color: #1e293b;
+font-size: 15px;
+font-family: inherit;
+transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea {
+min-height: 90px;
+resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+outline: none;
+border-color: #2563eb;
+box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* 8. Back Link */
+.back-link {
+display: inline-block;
+margin-top: 20px;
+color: #2563eb;
+font-weight: 600;
+text-decoration: none;
+}
+
+.back-link:hover {
+color: #1d4ed8;
+text-decoration: underline;
+}
+
+/* 9. Event Tables */
+table {
+width: 100%;
+border-collapse: collapse;
+margin: 20px 0;
+background: #ffffff;
+}
+
+th,
+td {
+padding: 13px 15px;
+border: 1px solid #e2e8f0;
+text-align: left;
+font-size: 14px;
+overflow-wrap: anywhere;
+}
+
+th {
+background: #2563eb;
+color: #ffffff;
+font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+background: #f8fafc;
+}
+
+tbody tr:hover {
+background: #eff6ff;
+}
+
+/* Search Event Details Table */
+#eventDetailsTable th {
+width: 35%;
+background: #eff6ff;
+color: #1e3a5f;
+}
+
+#eventDetailsTable td {
+color: #334155;
+}
+
+/* 10. Error Messages */
+#errorMessage {
+color: #b91c1c;
+background: #fef2f2;
+border: 1px solid #fecaca;
+border-radius: 6px;
+padding: 10px 12px;
+}
+
+/* 11. Responsive Layout */
+@media (max-width: 600px) {
+body {
+padding: 15px 10px;
+}
+
+.container {
+    margin: 10px auto;
+    padding: 22px 18px;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 23px;
+}
+
+.btn {
+    font-size: 15px;
+}
+
+th,
+td {
+    padding: 9px;
+    font-size: 13px;
+}
+
+}

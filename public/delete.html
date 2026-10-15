@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Event</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Event</h1>
+        <p>Enter the Event ID of the event you want to remove:</p>
+
+        <form action="/delete-event" method="POST">
+            <div class="form-group">
+                <label for="event_id">Event ID:</label>
+                <input type="number" id="event_id" name="event_id" placeholder="e.g. 1" required>
+            </div>
+
+            <button type="submit" class="btn delete-btn">Delete Event</button>
+        </form>
+
+        <br>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Event | CampusEvents</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #14213d;
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #facc15;
+        }
+
+        /* Full image without cropping */
+        .image-section {
+            width: 100%;
+            background: #0f172a;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .image-section img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+
+        .page-heading {
+            text-align: center;
+            padding: 30px 15px 10px;
+        }
+
+        .page-heading h2 {
+            color: #14213d;
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .page-heading p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .search-container {
+            width: 90%;
+            max-width: 650px;
+            margin: 25px auto 40px;
+            padding: 32px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 5px 22px rgba(0, 0, 0, 0.08);
+        }
+
+        .search-container h3 {
+            text-align: center;
+            color: #14213d;
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        .intro {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 18px;
+        }
+
+        input:focus {
+            outline: 2px solid #93c5fd;
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #1d4ed8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #14213d;
+        }
+
+        #message {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        .event-card {
+            margin-top: 24px;
+            padding: 22px;
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            border-radius: 8px;
+            line-height: 2;
+            overflow-wrap: anywhere;
+        }
+
+        .event-card h4 {
+            color: #14213d;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .back-link {
+            display: block;
+            width: fit-content;
+            margin: 25px auto 0;
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #14213d;
+            color: white;
+            text-align: center;
+            padding: 22px;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .page-heading h2 {
+                font-size: 28px;
+            }
+
+            .search-container {
+                padding: 22px;
+            }
+
+            .image-section {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>CampusEvents</h1>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="insert.html">Add Event</a>
+            <a href="list.html">View Events</a>
+            <a href="listone.html">Search Event</a>
+            <a href="update.html">Update Event</a>
+            <a href="delete.html">Delete Event</a>
+        </nav>
+    </header>
+
+    <!-- Complete image displayed here -->
+    <section class="image-section">
+        <img
+            src="./images/index_event.jpeg"
+            alt="College event celebration"
+        >
+    </section>
+
+    <section class="page-heading">
+        <h2>Search College Events</h2>
+        <p>Find your event details quickly using its event ID.</p>
+    </section>
+
+    <main class="search-container">
+        <h3>Search an Event</h3>
+
+        <p class="intro">
+            Enter the event ID to find its date, time, venue,
+            and description.
+        </p>
+
+        <form id="searchForm">
+            <label for="eventId">Enter Event ID</label>
+
+            <input
+                type="number"
+                id="eventId"
+                min="1"
+                placeholder="Example: 1"
+                required
+            >
+
+            <button type="submit">Search Event</button>
+        </form>
+
+        <div id="message" role="status" aria-live="polite"></div>
+        <div id="eventResult"></div>
+
+        <a href="index.html" class="back-link">
+            &#8592; Back to Home
+        </a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CampusEvents | College Event Management System</p>
+    </footer>
+
+    <script>
+        const searchForm = document.getElementById("searchForm");
+        const message = document.getElementById("message");
+        const eventResult = document.getElementById("eventResult");
+
+        searchForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const id = document.getElementById("eventId").value.trim();
+
+            message.textContent = "Searching for event...";
+            message.style.color = "#1d4ed8";
+            eventResult.replaceChildren();
+
+            try {
+                const response = await fetch(
+                    `/api/events/${encodeURIComponent(id)}`
+                );
+
+                if (!response.ok) {
+                    throw new Error(
+                        response.status === 404
+                            ? "No event found with this ID."
+                            : "Unable to search. Please check your server."
+                    );
+                }
+
+                const event = await response.json();
+
+                message.textContent = "Event found successfully!";
+                message.style.color = "#15803d";
+
+                const card = document.createElement("div");
+                card.className = "event-card";
+
+                const heading = document.createElement("h4");
+                heading.textContent = event.event_name || "Event Details";
+                card.appendChild(heading);
+
+                const fields = [
+                    ["Event ID", event.event_id],
+                    ["Event Name", event.event_name],
+                    ["Date", event.event_day],
+                    ["Time", event.event_time],
+                    ["Venue", event.venue],
+                    ["Description", event.description]
+                ];
+
+                fields.forEach(function ([label, value]) {
+                    const p = document.createElement("p");
+                    const strong = document.createElement("strong");
+
+                    strong.textContent = label + ": ";
+                    p.appendChild(strong);
+                    p.appendChild(document.createTextNode(
+                        value == null || value === ""
+                            ? "Not provided"
+                            : String(value)
+                    ));
+
+                    card.appendChild(p);
+                });
+
+                eventResult.appendChild(card);
+
+            } catch (error) {
+                message.textContent = error.message;
+                message.style.color = "#dc2626";
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+        

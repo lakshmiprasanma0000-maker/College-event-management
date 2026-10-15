@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Events</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container table-container">
+        <h1>All College Events</h1>
+
+        <table id="eventsTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Event Name</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                    <th>Venue</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody id="eventsTableBody">
+                <tr>
+                    <td colspan="6">Loading events...</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <a href="/index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script>
+        fetch('/api/events')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch events');
+                }
+                return response.json();
+            })
+            .then(events => {
+                const tableBody =
+                    document.getElementById('eventsTableBody');
+
+                tableBody.innerHTML = '';
+
+                if (!Array.isArray(events) || events.length === 0) {
+                    tableBody.innerHTML =
+                        '<tr><td colspan="6">No events found.</td></tr>';
+                    return;
+                }
+
+                events.forEach(event => {
+                    const row = document.createElement('tr');
+
+                    [
+                        event.event_id,
+                        event.event_name,
+                        event.event_time,
+                        event.event_day,
+                        event.venue,
+                        event.description
+                    ].forEach(value => {
+                        const cell = document.createElement('td');
+                        cell.textContent = value ?? '';
+                        row.appendChild(cell);
+                    });
+
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading events:', error);
+
+                document.getElementById('eventsTableBody').innerHTML =
+                    '<tr><td colspan="6">Unable to load events. Please try again.</td></tr>';
+            });
+    </script>
+</body>
+</html>

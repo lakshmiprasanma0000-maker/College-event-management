@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>College Event Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #222;
+        }
+
+        header {
+            background-color: #172554;
+            color: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #facc15;
+        }
+
+        .hero {
+            min-height: 540px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(15, 23, 42, 0.68),
+                    rgba(15, 23, 42, 0.68)
+                ),
+                url("./images/mainpage.jpeg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h2 {
+            font-size: 44px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .main-button {
+            display: inline-block;
+            background-color: #facc15;
+            color: #172554;
+            padding: 14px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .main-button:hover {
+            background-color: #eab308;
+        }
+
+        .section {
+            padding: 50px 7%;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 30px;
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            display: inline-block;
+            background-color: #172554;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            background-color: #1d4ed8;
+        }
+
+        footer {
+            background-color: #172554;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <header>
+        <h1>CampusEvents</h1>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="insert.html">Add Event</a>
+            <a href="list.html">View Events</a>
+            <a href="listone.html">Search Event</a>
+            <a href="update.html">Update Event</a>
+            <a href="delete.html">Delete Event</a>
+        </nav>
+    </header>
+
+    <!-- Main section with background image -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to College Event Management</h2>
+
+            <p>
+                Plan, organize, and manage your college events in one place.
+                Keep track of event names, dates, times, venues, and descriptions
+                with our simple event management system.
+            </p>
+
+            <a href="insert.html" class="main-button">
+                + Add New Event
+            </a>
+
+            <a href="list.html" class="main-button">
+                View All Events
+            </a>
+        </div>
+    </section>
+
+    <!-- Event management options -->
+    <section class="section">
+        <h2>Manage Your Events</h2>
+
+        <p class="section-description">
+            Choose an option below to manage your college events.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Add an Event</h3>
+                <p>
+                    Enter a new college event with its name, date, time,
+                    venue, and description.
+                </p>
+                <a href="insert.html">Add Event</a>
+            </div>
+
+            <div class="card">
+                <h3>View All Events</h3>
+                <p>
+                    View the list of events stored in your college
+                    event database.
+                </p>
+                <a href="list.html">View Events</a>
+            </div>
+
+            <div class="card">
+                <h3>Search an Event</h3>
+                <p>
+                    Find a particular event using its event ID.
+                </p>
+                <a href="listone.html">Search Event</a>
+            </div>
+
+            <div class="card">
+                <h3>Update an Event</h3>
+                <p>
+                    Change the details of an existing event.
+                </p>
+                <a href="update.html">Update Event</a>
+            </div>
+
+            <div class="card">
+                <h3>Delete an Event</h3>
+                <p>
+                    Remove an event from the event management database.
+                </p>
+                <a href="delete.html">Delete Event</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 CampusEvents | College Event Management System</p>
+    </footer>
+
+</body>
+</html>
